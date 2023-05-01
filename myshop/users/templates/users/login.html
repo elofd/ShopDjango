@@ -1,0 +1,13 @@
+{% extends 'shop/base.html' %}
+
+{% block title %}
+Логин
+{% endblock %}
+
+{% block content %}
+<form method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button class="submit-button" type="submit">Войти</button>
+</form>
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends "shop/base.html" %}
+
+{% block title %}
+Список заказов
+{% endblock %}
+
+{% block content %}
+<h1>
+  Заказы
+</h1>
+<ul>
+  {% for order in orders %}
+  <li>
+    <a href="{% url 'shop:order_detail' order.id %}">Заказ #{{ order.id }}</a>
+  </li>
+  {% empty %}
+  <li>Нет новых заказов</li>
+  {% endfor %}
+</ul>
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends "shop/base.html" %}
+
+{% block title %}
+Создание/редактирование заказа
+{% endblock %}
+
+{% block content %}
+<h1>
+  {% if order %}
+  Редактировать заказ
+  {% else %}
+  Создать заказ
+  {% endif %}
+</h1>
+<form method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit">Сохранить</button>
+</form>
+{% endblock %}

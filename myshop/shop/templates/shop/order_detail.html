@@ -1,0 +1,30 @@
+{% extends "shop/base.html" %}
+
+{% block title %}
+Детали заказа
+{% endblock %}
+
+{% block content %}
+<h1>
+  Заказ #{{ order.id }}
+</h1>
+<p>
+  Адрес доставки: {{ order.delivery_address }}
+</p>
+<p>
+  Статус заказа: {{ order.status }}
+</p>
+<p>
+  Промокод: {{ order.promocode }}
+</p>
+<ul>
+  {% for product in order.products.all %}
+  <li>
+    {{ product.name }} x {{ product.quantity }} = {{ product.total_price }}
+  </li>
+  {% endfor %}
+</ul>
+<p>
+  Всего: {{ product.total_price }}
+</p>
+{% endblock %}

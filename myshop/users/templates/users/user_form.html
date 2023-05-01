@@ -1,0 +1,14 @@
+{% extends 'shop/base.html' %}
+
+{% block title %}
+{% if user.is_authenticated %}Редактирование профиля{% else %}Создание профиля{% endif %}
+{% endblock %}
+
+{% block content %}
+  <h1>{% if user.is_authenticated %}Редактирование профиля{% else %}Создание профиля{% endif %}</h1>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Сохранить</button>
+  </form>
+{% endblock %}
