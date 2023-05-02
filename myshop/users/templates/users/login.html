@@ -10,4 +10,84 @@
   {{ form.as_p }}
   <button class="submit-button" type="submit">Войти</button>
 </form>
+<style>
+  h1 {
+    font-size: 36px;
+    margin-top: 50px;
+    margin-bottom: 30px;
+    text-align: center;
+  }
+
+  p {
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+
+  a {
+    text-decoration: none;
+    color: #007bff;
+  }
+
+  a:hover {
+    color: #0069d9;
+  }
+
+  .user-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+  }
+
+  .user-info p {
+    margin-bottom: 10px;
+  }
+
+  .btn-update {
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 5px;
+    border: none;
+    padding: 10px 20px;
+    font-size: 18px;
+    cursor: pointer;
+    margin-top: 30px;
+  }
+
+  .btn-update:hover {
+    background-color: #0069d9;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+  }
+
+  .submit-button {
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 5px;
+    border: none;
+    padding: 10px 20px;
+    font-size: 18px;
+    cursor: pointer;
+    margin-top: 30px;
+  }
+
+  .submit-button:hover {
+    background-color: #0069d9;
+  }
+
+  form input[type="text"],
+  form input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border: none;
+    font-size: 18px;
+  }
+</style>
 {% endblock %}

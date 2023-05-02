@@ -1,0 +1,279 @@
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+img {
+max-width: 100%;
+}
+
+.product-img {
+max-width: 20%;
+}
+
+.nav-list {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 20px 40px;
+  background-color: #f9f9f9;
+}
+
+.nav-item {
+  margin: 0 15px;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: #333;
+  font-size: 16px;
+  font-weight: bold;
+  transition: color 0.2s ease-in-out;
+}
+
+.nav-link:hover {
+  color: #ff4500;
+}
+
+/* Стили для приветствия пользователя */
+.nav-item:first-child {
+  margin-right: auto;
+}
+
+/* Стили для кнопок входа и регистрации */
+.nav-link:last-child {
+  background-color: #ff4500;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.nav-link:last-child:hover {
+  background-color: #333;
+}
+
+/* Стили для product_list */
+.products-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.products-title {
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+  width: 100%;
+  text-align: center;
+}
+
+.products-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.product-item {
+  border: 1px solid #ccc;
+  margin: 0.5rem;
+  padding: 1rem;
+  width: calc(25% - 1rem);
+}
+
+.product-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.product-name {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.product-price {
+  font-size: 1.25rem;
+  margin: 0;
+}
+
+.no-products-available {
+  color: red;
+  font-style: italic;
+}
+
+/* Стили для product_detail */
+.product-name {
+font-size: 2rem;
+font-weight: bold;
+color: #333;
+}
+
+.product-description {
+font-size: 1.2rem;
+margin-top: 1rem;
+line-height: 1.5;
+}
+
+.product-price {
+font-size: 1.5rem;
+margin-top: 1rem;
+color: #007bff;
+}
+
+.product-form {
+margin-top: 2rem;
+}
+
+.add-to-cart-btn {
+font-size: 1.2rem;
+padding: 1rem 2rem;
+background-color: #007bff;
+color: #fff;
+border: none;
+border-radius: 5px;
+cursor: pointer;
+transition: background-color 0.3s ease-in-out;
+}
+
+.add-to-cart-btn:hover {
+background-color: #0062cc;
+}
+
+/* Стили для order_list */
+.orders-heading {
+  font-size: 2em;
+  font-weight: bold;
+  text-align: center;
+}
+
+.orders-list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.order-item {
+  margin-bottom: 10px;
+}
+
+.order-link {
+  color: blue;
+  text-decoration: none;
+}
+
+.no-orders {
+  color: red;
+  font-style: italic;
+}
+
+/* Стили для order_detail */
+.order-details-heading {
+  font-size: 2em;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.order-details-container {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 20px;
+}
+
+.order-details-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.order-details-label {
+  font-weight: bold;
+  width: 150px;
+}
+
+.order-details-value {
+  flex: 1;
+}
+
+.products-list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  margin-top: 5px;
+  margin-left: 0;
+}
+
+.product-item {
+  margin-bottom: 5px;
+}
+
+.total-price {
+  font-weight: bold;
+  margin-top: 20px;
+  text-align: right;
+}
+
+/* Стили для user_form */
+.profile-heading {
+  font-size: 2em;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.profile-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 50%;
+  margin: 0 auto;
+}
+
+.profile-form label {
+  font-size: 1.2em;
+  margin-bottom: 5px;
+}
+
+.profile-form input[type="text"],
+.profile-form input[type="email"],
+.profile-form input[type="password"] {
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  width: 100%;
+  font-size: 1.2em;
+}
+
+.profile-form-submit {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 1.2em;
+  margin-top: 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.profile-form-submit:hover {
+  background-color: #5cbf62;
+}
+
+/* Стили для user_detail */

@@ -5,16 +5,16 @@
 {% endblock %}
 
 {% block content %}
-<h1>
+<h1 class="orders-heading">
   Заказы
 </h1>
-<ul>
+<ul class="orders-list">
   {% for order in orders %}
-  <li>
-    <a href="{% url 'shop:order_detail' order.id %}">Заказ #{{ order.id }}</a>
+  <li class="order-item">
+    <a class="order-link" href="{% url 'shop:order_detail' order.id %}">Заказ #{{ order.id }}</a>
   </li>
   {% empty %}
-  <li>Нет новых заказов</li>
+  <li class="no-orders">Нет новых заказов</li>
   {% endfor %}
 </ul>
 {% endblock %}

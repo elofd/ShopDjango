@@ -7,7 +7,7 @@ app_name = 'users'
 
 
 urlpatterns = [
-    path('<int:pk>/', CustomUserDetailView.as_view(), name='user_detail'),
+    path('user_info/<int:pk>/', CustomUserDetailView.as_view(), name='user_detail'),
     path('register/', CustomUserCreateView.as_view(), name='user_create'),
     path('<int:pk>/update/', CustomUserUpdateView.as_view(), name='user_update'),
     path('login/', CustomLoginView.as_view(), name='login'),

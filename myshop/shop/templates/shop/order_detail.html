@@ -5,26 +5,35 @@
 {% endblock %}
 
 {% block content %}
-<h1>
+<h1 class="order-details-heading">
   Заказ #{{ order.id }}
 </h1>
-<p>
-  Адрес доставки: {{ order.delivery_address }}
-</p>
-<p>
-  Статус заказа: {{ order.status }}
-</p>
-<p>
-  Промокод: {{ order.promocode }}
-</p>
-<ul>
-  {% for product in order.products.all %}
-  <li>
-    {{ product.name }} x {{ product.quantity }} = {{ product.total_price }}
-  </li>
-  {% endfor %}
-</ul>
-<p>
-  Всего: {{ product.total_price }}
-</p>
+<div class="order-details-container">
+  <div class="order-details-row">
+    <div class="order-details-label">Адрес доставки:</div>
+    <div class="order-details-value">{{ order.delivery_address }}</div>
+  </div>
+  <div class="order-details-row">
+    <div class="order-details-label">Статус заказа:</div>
+    <div class="order-details-value">{{ order.status }}</div>
+  </div>
+  <div class="order-details-row">
+    <div class="order-details-label">Промокод:</div>
+    <div class="order-details-value">{{ order.promocode }}</div>
+  </div>
+  <div class="order-details-row">
+    <div class="order-details-label">Товары:</div>
+    <ul class="products-list">
+      {% for product in order.products.all %}
+      <li class="product-item">
+        {{ product.name }} x {{ product.quantity }} = {{ product.total_price }} руб.
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+  <div class="order-details-row">
+    <div class="order-details-label">Итого:</div>
+    <div class="order-details-value">{{ product.total_price }} руб.</div>
+  </div>
+</div>
 {% endblock %}

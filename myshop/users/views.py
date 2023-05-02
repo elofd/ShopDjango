@@ -24,7 +24,7 @@ class CustomUserUpdateView(UpdateView):
     model = CustomUser
     form_class = CustomUserChangeForm
     template_name = 'users/user_form.html'
-    success_url = 'shop:product_list'
+    success_url = reverse_lazy('shop:product_list')
 
 
 class CustomUserDetailView(DetailView):

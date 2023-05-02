@@ -5,10 +5,10 @@
 {% endblock %}
 
 {% block content %}
-  <h1>{% if user.is_authenticated %}Редактирование профиля{% else %}Создание профиля{% endif %}</h1>
-  <form method="post">
+  <h1 class="profile-heading">{% if user.is_authenticated %}Редактирование профиля{% else %}Создание профиля{% endif %}</h1>
+  <form class="profile-form" method="post">
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit">Сохранить</button>
+    <button class="profile-form-submit" type="submit">Сохранить</button>
   </form>
 {% endblock %}

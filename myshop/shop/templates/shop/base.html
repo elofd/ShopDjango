@@ -2,6 +2,8 @@
 <html lang="ru">
 
 <head>
+  {% load static %}
+  <link rel="stylesheet" type="text/css" href="{% static 'shop/style.css' %}">
   <meta charset="UTF-8">
   <title>
     {% block title %}
@@ -11,12 +13,28 @@
 
 <body>
   <ul class="nav-list">
+    <li class="nav-item">
+      <a href="{% url 'shop:product_list' %}" class="nav-link">Главная</a>
+    </li>
+    {% if user.is_staff %}
+    <li class="nav-item">
+      <a href="{% url 'shop:order_list' %}" class="nav-link">Список заказов</a>
+    </li>
+    {% endif %}
     {% if user.is_authenticated %}
-    <li class="nav-item nav-link">Привет, {{ user.email }}</li>
-    <li class="nav-item"><a class="nav-link" href="{% url 'users:logout' %}">Выход</a></li>
+    <li class="nav-item">
+      Привет, <a class="nav-link" href="{% url 'users:user_detail' user.id %}">{{ user.email }}</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'users:logout' %}">Выход</a>
+    </li>
     {% else %}
-    <li class="nav-item"><a class="nav-link" href="{% url 'users:login' %}">Вход</a></li>
-    <li class="nav-item"><a class="nav-link" href="{% url 'users:user_create' %}">Регистрация</a></li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'users:login' %}">Вход</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'users:user_create' %}">Регистрация</a>
+    </li>
     {% endif %}
   </ul>
   {% block content %}
