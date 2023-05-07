@@ -1,35 +1,31 @@
-from django.shortcuts import render, get_object_or_404, redirect
-from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
-from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
-from django.views import View
+from django.shortcuts import render, redirect, get_object_or_404
+from django.views.decorators.http import require_POST
+
+from shop.models import Product
+from .cart import Cart
+from .forms import CartAddProductForm
 
 
-class CartListView(LoginRequiredMixin, View):
-    def get(self, request):
-        cart, created = Cart.objects.get_or_create(buyer=request.user)
-        return render(request, 'cart/cart_list.html', {'cart': cart})
+@require_POST
+def cart_add(request, product_id):
+    cart = Cart(request)
+    product = get_object_or_404(Product, id=product_id)
+    form = CartAddProductForm(request.POST)
+    if form.is_valid():
+        cd = form.cleaned_data
+        cart.add(product=product,
+                 quantity=cd['quantity'],
+                 update_quantity=cd['update'])
+    return redirect('cart:cart_detail')
 
 
-class CartAddView(LoginRequiredMixin, View):
-    def post(self, request, product_id):
-        product = get_object_or_404(Product, id=product_id)
-        cart, created = Cart.objects.get_or_create(buyer=request.user)
-        cart.products.add(product)
-        return redirect('cart:cart_list')
+def cart_remove(request, product_id):
+    cart = Cart(request)
+    product = get_object_or_404(Product, id=product_id)
+    cart.remove(product)
+    return redirect('cart:cart_detail')
 
 
-class CartUpdateView(LoginRequiredMixin, View):
-    def post(self, request, product_id):
-        product = get_object_or_404(Product, id=product_id)
-        cart, created = Cart.objects.get_or_create(buyer=request.user)
-        quantity = int(request.POST.get('quantity', 1))
-        cart.products.add(product, through_defaults={'quantity': quantity})
-        return redirect('cart:cart_list')
-
-
-class CartDeleteView(LoginRequiredMixin, View):
-    def post(self, request, product_id):
-        product = get_object_or_404(Product, id=product_id)
-        cart, created = Cart.objects.get_or_create(buyer=request.user)
-        cart.products.remove(product)
-        return redirect('cart:cart_list')
+def cart_detail(request):
+    cart = Cart(request)
+    return render(request, 'cart/cart_detail.html', {'cart': cart})

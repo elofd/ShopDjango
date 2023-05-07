@@ -1,0 +1,39 @@
+{% extends 'shop/base.html' %}
+
+{% block title %}
+Корзина
+{% endblock %}
+
+{% block content %}
+  <h1>Корзина</h1>
+  <div class="cart">
+    {% for item in cart %}
+      {% with product=item.product %}
+        <div class="cart-item">
+          <div class="cart-img">
+            <a href="{{ product.get_absolute_url }}">
+              {% if product.image %}
+                <img src="{{ product.image.url }}" alt="{{ product.name }}">
+              {% else %}
+                <span>Нет изображения</span>
+              {% endif %}
+            </a>
+          </div>
+          <div class="cart-info">
+            <h2>{{ product.name }}</h2>
+            <p>Количество: {{ item.quantity }}</p>
+            <p>Цена: ${{ item.price }}</p>
+            <a href="{% url 'cart:cart_remove' product.id%}">Удалить</a>
+          </div>
+        </div>
+      {% endwith %}
+    {% endfor %}
+    <div class="cart-total">
+      <p>Total: ${{ cart.get_total_price }}</p>
+    </div>
+  </div>
+  <p class="cart-text-right">
+      <a href="{% url 'shop:product_list' %}" class="cart-button cart-light">Продолжить покупки</a>
+      <a href="{% url 'shop:order_create' %}" class="cart-button">Оформить заказ</a>
+  </p>
+{% endblock %}

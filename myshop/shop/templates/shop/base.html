@@ -3,7 +3,7 @@
 
 <head>
   {% load static %}
-  <link rel="stylesheet" type="text/css" href="{% static 'shop/style.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
   <meta charset="UTF-8">
   <title>
     {% block title %}
@@ -15,6 +15,9 @@
   <ul class="nav-list">
     <li class="nav-item">
       <a href="{% url 'shop:product_list' %}" class="nav-link">Главная</a>
+    </li>
+    <li class="nav-item">
+      <a href="{% url 'cart:cart_detail' %}" class="nav-link">Корзина</a>
     </li>
     {% if user.is_staff %}
     <li class="nav-item">
