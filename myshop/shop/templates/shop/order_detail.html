@@ -10,6 +10,10 @@
 </h1>
 <div class="order-details-container">
   <div class="order-details-row">
+    <div class="order-details-label">Покупатель:</div>
+    <div class="order-details-value">{{ order.buyer }}</div>
+  </div>
+  <div class="order-details-row">
     <div class="order-details-label">Адрес доставки:</div>
     <div class="order-details-value">{{ order.delivery_address }}</div>
   </div>
@@ -23,17 +27,17 @@
   </div>
   <div class="order-details-row">
     <div class="order-details-label">Товары:</div>
-    <ul class="products-list">
-      {% for product in order.products.all %}
-      <li class="product-item">
-        {{ product.name }} x {{ product.quantity }} = {{ product.total_price }} руб.
+    <ul class="">
+      {% for item in order.items.all %}
+      <li class="">
+        {{ item.product }} x {{ item.quantity }} = {{ item.get_cost }} руб.
       </li>
       {% endfor %}
     </ul>
   </div>
   <div class="order-details-row">
     <div class="order-details-label">Итого:</div>
-    <div class="order-details-value">{{ product.total_price }} руб.</div>
+    <div class="order-details-value">{{ order.get_total_cost }} руб.</div>
   </div>
 </div>
 {% endblock %}
